@@ -6,9 +6,9 @@
         // - IF player(rock) vs. comp(scissors)
         // - IF player(scissors) vs. comp(paper)
         // - IF player(paper) vs. comp(rock)
-        //      - RETURN: increment 1 player point and log "You win! x beats y." 
+            //  - RETURN: increment 1 player point and log "You win! x beats y." 
         // - vice-versa of above 3 situations
-        //      - RETURN: increment 1 computer point and log "You lose! y beats x."
+            //  - RETURN: increment 1 computer point and log "You lose! y beats x."
 // - Create a function that calls 5 rounds
 
 let rck = "Rock";
@@ -23,11 +23,10 @@ function getComputerChoice() {
     // console.log(i);
 
     //using conditionals & comparisons:
-    if (i = 1) {return rck};
-    if (i = 2) {return ppr};
-    if (i = 3) {return scr};
-
-}
+    if (i == 1) {return rck};
+    if (i == 2) {return ppr};
+    if (i == 3) {return scr};
+};
 
 
 
