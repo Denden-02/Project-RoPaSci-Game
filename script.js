@@ -35,7 +35,7 @@ function getHumanChoice() {
     // research how to make the string variables case-insensitive
     // SOlution: trim and convert to lowercase before comparison
 
-    //NORMALMODE:
+    //NORMAL MODE:
 
     if (pick == undefined) {alert("What the fudge??");}
 
@@ -45,10 +45,25 @@ function getHumanChoice() {
     // else {alert("Hey, please choose rock, paper, or scissors!");}
     // };
 
-    //HARDMODE:
+    //HARD MODE:
     return (pick == "rock" || pick == "paper" || pick == "scissors") ? pick : alert("Hey, please choose rock, paper, or scissors!");
 }
 
+function playRound() {
+    let player = getHumanChoice();
+    let comp = getComputerChoice();
+    // console.log(player + ' ' + comp);
 
+    //NORMAL MODE:
+    if (player == 'rock' && comp == 'scissors' || player == 'scissors' && comp == 'paper' || player == 'paper' && comp == 'rock') {
+        UserScores += 1;
+        console.log(`player => ${player} vs. computer => ${comp}: You WIN!`);
+    } else if (player == 'scissors' && comp == 'rock' || player == 'paper' && comp == 'scissors' || player == 'rock' && comp == 'paper') {
+        CompScores += 1;
+        console.log(`player => ${player} vs. computer => ${comp}: You LOSE!`);
+    } 
+}
 
+// TODO: ADD CASE WHERE getHumanChoice is undefined
+// TODO: ADD RESET BUTTON IF CANCELED THE GAME
 console.log("Hello Odin!")
