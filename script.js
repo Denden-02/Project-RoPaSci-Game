@@ -1,7 +1,7 @@
 // FIXME: - Setup file folder in Github with index.html, readme, js ScriptProcessorNode
-// - Create function that will make the AI pick R,P,S {via Math.floor(Math.random())}
-// - Create function that prompts user to pick R,P,S using getHumanChoice()
-// - Initialize a '0' counter for player and computer scores 
+// FIXME: - Create function that will make the AI pick R,P,S {via Math.floor(Math.random())}
+// FIXME: - Create function that prompts user to pick R,P,S using getHumanChoice()
+// FIXME:  - Initialize a '0' counter for player and computer scores 
 // - Create a function that takes the player and comp variables as argument to start a round (playRound)
         // - IF player(rock) vs. comp(scissors)
         // - IF player(scissors) vs. comp(paper)
@@ -14,6 +14,8 @@
 let rck = "rock";
 let ppr = "paper";
 let scr = "scissors";
+let CompScore = 0;
+let UserScore = 0;
 
 function getComputerChoice() {
     var i = Math.floor((Math.random()*3) +1);
@@ -32,12 +34,20 @@ function getHumanChoice() {
     let pick = prompt (`What\'s your pick? `);
     // research how to make the string variables case-insensitive
     // SOlution: trim and convert to lowercase before comparison
+
+    //NORMAL DIFF:
+
     if (pick == undefined) {alert("What the fudge??");}
 
     pick = pick.trim().toLowerCase();
 
-    if (pick == "rock" || pick == "paper" || pick == "scissors") {return pick;}
-    else {alert("Hey, please choose rock, paper, or scissors!");}
-    };
+    // if (pick == "rock" || pick == "paper" || pick == "scissors") {return pick;}
+    // else {alert("Hey, please choose rock, paper, or scissors!");}
+    // };
+
+    //HARD DIFF:
+    return (pick == "rock" || pick == "paper" || pick == "scissors") ? pick : alert("Hey, please choose rock, paper, or scissors!");
+}
+ 
 
 console.log("Hello Odin!")
