@@ -14,8 +14,8 @@
 let rck = "rock";
 let ppr = "paper";
 let scr = "scissors";
-let CompScore = 0;
-let UserScore = 0;
+let CompScores = 0;
+let UserScores = 0;
 
 function getComputerChoice() {
     var i = Math.floor((Math.random()*3) +1);
@@ -35,7 +35,7 @@ function getHumanChoice() {
     // research how to make the string variables case-insensitive
     // SOlution: trim and convert to lowercase before comparison
 
-    //NORMAL DIFF:
+    //NORMALMODE:
 
     if (pick == undefined) {alert("What the fudge??");}
 
@@ -45,9 +45,10 @@ function getHumanChoice() {
     // else {alert("Hey, please choose rock, paper, or scissors!");}
     // };
 
-    //HARD DIFF:
+    //HARDMODE:
     return (pick == "rock" || pick == "paper" || pick == "scissors") ? pick : alert("Hey, please choose rock, paper, or scissors!");
 }
- 
+
+
 
 console.log("Hello Odin!")
