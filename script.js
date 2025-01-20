@@ -2,7 +2,7 @@
 // FIXME: - Create function that will make the AI pick R,P,S {via Math.floor(Math.random())}
 // FIXME: - Create function that prompts user to pick R,P,S using getHumanChoice()
 // FIXME:  - Initialize a '0' counter for player and computer scores 
-// - Create a function that takes the player and comp variables as argument to start a round (playRound)
+// FIXME:- Create a function that takes the player and comp variables as argument to start a round (playRound)
         // - IF player(rock) vs. comp(scissors)
         // - IF player(scissors) vs. comp(paper)
         // - IF player(paper) vs. comp(rock)
@@ -50,6 +50,7 @@ function getHumanChoice() {
 }
 
 function playRound() {
+    for (let i=1; i<=5; i++) {
     let player = getHumanChoice();
     let comp = getComputerChoice();
     // console.log(player + ' ' + comp);
@@ -62,8 +63,11 @@ function playRound() {
         CompScores += 1;
         console.log(`player => ${player} vs. computer => ${comp}: You LOSE!`);
     } 
+    }
 }
 
 // TODO: ADD CASE WHERE getHumanChoice is undefined
 // TODO: ADD RESET BUTTON IF CANCELED THE GAME
-console.log("Hello Odin!")
+console.log("Hello Odin! Here's the scores")
+console.table({"Player":UserScores,"Computer":CompScores});
+
