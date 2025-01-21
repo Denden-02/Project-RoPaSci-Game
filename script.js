@@ -10,10 +10,7 @@
         // - vice-versa of above 3 situations
             //  - RETURN: increment 1 computer point and log "You lose! y beats x."
 // - Create a function that calls 5 rounds
-
-let rck = "rock";
-let ppr = "paper";
-let scr = "scissors";
+ 
 let CompScores = 0;
 let UserScores = 0;
 
@@ -25,9 +22,9 @@ function getComputerChoice() {
     // console.log(i);
 
     //using conditionals & comparisons:
-    if (i == 1) {return rck};
-    if (i == 2) {return ppr};
-    if (i == 3) {return scr};
+    if (i == 1) {return "rock"};
+    if (i == 2) {return "paper"};
+    if (i == 3) {return "scissors"};
 };
 
 function getHumanChoice() {
@@ -50,7 +47,7 @@ function getHumanChoice() {
 }
 
 function playRound() {
-    for (let i=1; i<=5; i++) {
+    for (let i=1; i<=5;) {
     let player = getHumanChoice();
     let comp = getComputerChoice();
     // console.log(player + ' ' + comp);
@@ -59,14 +56,21 @@ function playRound() {
     if (player == 'rock' && comp == 'scissors' || player == 'scissors' && comp == 'paper' || player == 'paper' && comp == 'rock') {
         UserScores += 1;
         console.log(`player => ${player} vs. computer => ${comp}: You WIN!`);
+        i++;
+        console.table({"Player":UserScores,"Computer":CompScores});
     } else if (player == 'scissors' && comp == 'rock' || player == 'paper' && comp == 'scissors' || player == 'rock' && comp == 'paper') {
         CompScores += 1;
         console.log(`player => ${player} vs. computer => ${comp}: You LOSE!`);
-    } 
-    console.table({"Player":UserScores,"Computer":CompScores});
+        i++;
+        console.table({"Player":UserScores,"Computer":CompScores});
+    } else {
+        console.log("DRAW! Repeating the round.");
+        console.table({"Player":UserScores,"Computer":CompScores});
+    }
     }
 }
 
+// TODO: ADD CASE where draw means repeat the set
 // TODO: ADD CASE WHERE getHumanChoice is undefined
 // TODO: ADD RESET BUTTON IF CANCELED THE GAME
 console.log("Hello Odin. Let's play!");
