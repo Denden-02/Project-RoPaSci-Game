@@ -68,6 +68,6 @@ function playRound() {
 
 // TODO: ADD CASE WHERE getHumanChoice is undefined
 // TODO: ADD RESET BUTTON IF CANCELED THE GAME
-console.log("Hello Odin! Here's the scores")
+console.log("Hello Odin! Here are the scores");
 console.table({"Player":UserScores,"Computer":CompScores});
 
