@@ -10,9 +10,6 @@
         // - vice-versa of above 3 situations
             //  - RETURN: increment 1 computer point and log "You lose! y beats x."
 // - Create a function that calls 5 rounds
- 
-let CompScores = 0;
-let UserScores = 0;
 
 function getComputerChoice() {
     var i = Math.floor((Math.random()*3) +1);
@@ -47,6 +44,10 @@ function getHumanChoice() {
 }
 
 function playRound() {
+    
+    let CompScores = 0;
+    let UserScores = 0;  
+
     for (let i=1; i<=5;) {
     let player = getHumanChoice();
     let comp = getComputerChoice();
