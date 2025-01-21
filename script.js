@@ -63,11 +63,12 @@ function playRound() {
         CompScores += 1;
         console.log(`player => ${player} vs. computer => ${comp}: You LOSE!`);
     } 
+    console.table({"Player":UserScores,"Computer":CompScores});
     }
 }
 
 // TODO: ADD CASE WHERE getHumanChoice is undefined
 // TODO: ADD RESET BUTTON IF CANCELED THE GAME
-console.log("Hello Odin! Here are the scores");
-console.table({"Player":UserScores,"Computer":CompScores});
+console.log("Hello Odin. Let's play!");
+
 
