@@ -58,24 +58,40 @@ function playRound() {
         console.log(`player => ${player} vs. computer => ${comp}: You WIN!`);
         i++;
         console.table({"Player":UserScores,"Computer":CompScores});
-        console.log('current '+i);
+        // console.log('current '+i);
     } else if (player == 'scissors' && comp == 'rock' || player == 'paper' && comp == 'scissors' || player == 'rock' && comp == 'paper') {
         CompScores += 1;
         console.log(`player => ${player} vs. computer => ${comp}: You LOSE!`);
         i++;
         console.table({"Player":UserScores,"Computer":CompScores});
-        console.log('current '+i);
+        // console.log('current '+i);
     } else {
         console.log("DRAW! Repeating the round.");
         console.table({"Player":UserScores,"Computer":CompScores});
-        console.log('current '+i);
+        // console.log('current '+i);
     }
+
     }
+    
+    if ( UserScores> CompScores ) {
+        console.log(`FINAL SCORE: 
+            player(${UserScores})
+            computer(${CompScores})
+
+            YOU WIN!`);
+    } else console.log (
+            `FINAL SCORE: 
+
+            player(${UserScores})
+            computer(${CompScores})
+            
+            YOU LOSE!`
+        );
 }
 
 // FIXME: ADD CASE where draw means repeat the set
-// TODO: ADD CASE WHERE getHumanChoice is undefined
-// TODO: ADD RESET BUTTON IF CANCELED THE GAME
+// FIXME: ADD CASE WHERE getHumanChoice is undefined
+// FIXME: ADD RESET BUTTON IF CANCELED THE GAME
 console.log("Hello Odin. Let's play!");
 
 
