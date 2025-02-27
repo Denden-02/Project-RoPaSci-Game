@@ -1,0 +1,50 @@
+/* /*DCFB - G - 'DDC-FB (Disconnect-Facebook - Gagovernment)
+(Display, Dimension, Color, Font, Borders, Governing) 
+Governing: Specificity, Inheritance, Rule Order
+ */
+body {
+    height:100vh;
+    box-sizing: border-box;
+    background-color: rgb(241, 236, 228);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+.main-container {
+    display:flex;
+    flex-direction: column;
+    padding: 40px 30px;
+    border: 4px solid rgb(122, 158, 67);
+    margin: 0 auto;
+    width: 75vw;
+    height: 80vh;
+    gap: 20px;
+}
+
+.submain_1 {
+    display:flex;
+    border: 4px solid rgb(122, 158, 67);
+    margin: 0 auto;
+    height: 50vh;
+    width: 60vw;
+}
+
+.submain_2 {
+    display:flex;
+    border: 4px solid rgb(122, 158, 67);
+    margin: 0 auto;
+    height: 50vh;
+    width: 60vw; 
+}
+
+
+
+
+
+/* CONTINUE PERFECTING THE SIZES OF DIVS */
+/* CONTINUE TOMORROW, CSS SIZING RELATIVE TO PARENT CONTAINER */
+
+
+
