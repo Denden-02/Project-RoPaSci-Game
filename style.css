@@ -25,19 +25,62 @@ h1 {
 
 .submain_1 {
     display:flex;
+    padding: 15px 30px;
     border: 4px solid rgb(122, 158, 67);
     margin: 0 auto;
     height: 50vh;
     width: 60vw;
+    align-items:center;
+    justify-content: space-between;
 }
 
 .submain_2 {
-    display:flex;
+    display: flex;
+    padding: 15px 30px;
     border: 4px solid rgb(122, 158, 67);
     margin: 0 auto;
     height: 50vh;
     width: 60vw; 
+    align-items: center;
+    justify-content: space-between;
+    
 }
+
+
+.subsub_1 {
+    display:flex;
+    border: 4px solid rgb(235, 161, 112);
+    height: 30vh;
+}
+
+div.subsub_1#human, div.subsub_1#computer {
+    width: 200px;
+}
+
+div.subsub_1#monitor {
+    width: 400px;
+
+}
+
+
+.subsub_2 {
+    display:flex;
+    border: 4px solid rgb(235, 161, 112);
+    height: 30vh;
+}
+
+div.subsub_2#pick, div.subsub_2#wallpick {
+    width: 200px;
+    display:flex;
+    flex-direction: column;
+}
+
+div.subsub_2#arenafight {
+    width: 600px;
+}
+
+
+
 
 
 
