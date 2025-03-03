@@ -12,6 +12,8 @@ body {
 h1 {
     text-align: center;
 }
+
+/* ---- MAIN BOX + UPPER BOX + LOWER BOX----- */
 .main-container {
     display:flex;
     flex-direction: column;
@@ -47,11 +49,14 @@ h1 {
    
 }
 
-/* ---- UPPER BOX -----  */
+/* ---- UPPER BOX DIVS-----  */
 .subsub_1 {
-    display:flex;
     border: 4px solid rgb(235, 161, 112);
     height: 30vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 div.subsub_1#humanScore, div.subsub_1#compScore {
@@ -60,11 +65,17 @@ div.subsub_1#humanScore, div.subsub_1#compScore {
 
 div.subsub_1#monitor {
     width: 30vw;
-
 }
 
+div.subsub_1#humanScore > p:last-child, div.subsub_1#compScore > p:last-child {
+    display: inline-block;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bolder;
+    /* background-color: yellow; */
+}
 
-/* ------ LOWER BOX ------ */
+/* ------ LOWER BOX DIVS ------ */
 .subsub_2 {
     display:flex;
     border: 4px solid rgb(235, 161, 112);
@@ -85,10 +96,6 @@ button {
     padding: 0;
 }
 
-/* img {
-    object-fit:contain;
-} */
-
 div.subsub_2#arenafight {
     border: 8px solid black;
     display: flex;
@@ -101,8 +108,7 @@ div.subsub_2#arenafight {
 div.subsub_2#arenafight > div{
     border: 8px solid black;
 } 
-
-/* CONTINUE HERE HOW TO RESIZE THE IMAGE PROPERLY */
+ 
 img#fighter, #wall-e {
     display:block;
     width: 10vw;
