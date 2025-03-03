@@ -72,6 +72,9 @@ div.subsub_1#monitor > button {
     background-color: rgb(150, 223, 150);
     color: beige;
     border: 4px solid grey;
+    min-width: 8vw;
+    height: 100px;
+    font-size: 2.5em;
 }
 
 div.subsub_1#humanScore > p:last-child, div.subsub_1#compScore > p:last-child {
