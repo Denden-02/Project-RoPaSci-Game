@@ -68,9 +68,9 @@ div.subsub_1#monitor {
     justify-content: center;
 }
 
-div.subsub_1#monitor > button {
+button#start {
     background-color: rgb(150, 223, 150);
-    color: beige;
+    color: rgb(58, 58, 14);
     border: 4px solid grey;
     min-width: 8vw;
     height: 100px;

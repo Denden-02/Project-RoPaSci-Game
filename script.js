@@ -1,16 +1,3 @@
-// FIXME: - Setup file folder in Github with index.html, readme, js ScriptProcessorNode
-// FIXME: - Create function that will make the AI pick R,P,S {via Math.floor(Math.random())}
-// FIXME: - Create function that prompts user to pick R,P,S using getHumanChoice()
-// FIXME:  - Initialize a '0' counter for player and computer scores 
-// FIXME:- Create a function that takes the player and comp variables as argument to start a round (playRound)
-        // - IF player(rock) vs. comp(scissors)
-        // - IF player(scissors) vs. comp(paper)
-        // - IF player(paper) vs. comp(rock)
-            //  - RETURN: increment 1 player point and log "You win! x beats y." 
-        // - vice-versa of above 3 situations
-            //  - RETURN: increment 1 computer point and log "You lose! y beats x."
-// - Create a function that calls 5 rounds
-
 function getComputerChoice() {
     var i = Math.floor((Math.random()*3) +1);
     // using arrays:
@@ -31,7 +18,10 @@ function getHumanChoice() {
 
     //NORMAL MODE:
 
-    if (pick == undefined) {alert("What the fudge?? Cancel the damn match!");}
+    if (pick == undefined) {
+        alert("What the fudge?? Cancel the damn match!");
+        //RETURN a START STATE FUNCTION
+    }
 
     pick = pick.trim().toLowerCase();
 
@@ -47,6 +37,9 @@ function playRound() {
     
     let CompScores = 0;
     let UserScores = 0;  
+
+    document.getElementById("start").
+    monitor.textContent = "Make a pick";
 
     for (let i=1; i<=5;) {
     let player = getHumanChoice();
@@ -89,9 +82,22 @@ function playRound() {
         );
 }
 
-// FIXME: ADD CASE where draw means repeat the set
-// FIXME: ADD CASE WHERE getHumanChoice is undefined
-// FIXME: ADD RESET BUTTON IF CANCELED THE GAME
 console.log("Hello Odin. Let's play!");
+
+document.getElementById("start").addEventListener('click', playRound);
+//3/3/2025 CONTINUE SOLVING HOW THE ADDEVENTLISTENER WORKS ON PORT 5500
+
+// FIXME: - Setup file folder in Github with index.html, readme, js ScriptProcessorNode
+// FIXME: - Create function that will make the AI pick R,P,S {via Math.floor(Math.random())}
+// FIXME: - Create function that prompts user to pick R,P,S using getHumanChoice()
+// FIXME:  - Initialize a '0' counter for player and computer scores 
+// FIXME:- Create a function that takes the player and comp variables as argument to start a round (playRound)
+        // - IF player(rock) vs. comp(scissors)
+        // - IF player(scissors) vs. comp(paper)
+        // - IF player(paper) vs. comp(rock)
+            //  - RETURN: increment 1 player point and log "You win! x beats y." 
+        // - vice-versa of above 3 situations
+            //  - RETURN: increment 1 computer point and log "You lose! y beats x."
+// - Create a function that calls 5 rounds
 
 
