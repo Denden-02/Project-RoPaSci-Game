@@ -38,8 +38,8 @@ function playRound() {
     let CompScores = 0;
     let UserScores = 0;  
 
-    document.getElementById("start").
-    monitor.textContent = "Make a pick";
+    document.getElementById("start").style.display = "none"
+    document.getElementById("start").style.display = "none"
 
     for (let i=1; i<=5;) {
     let player = getHumanChoice();
