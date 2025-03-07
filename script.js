@@ -18,10 +18,12 @@ let hideWfinal = () => document.getElementById("Wfinal").style.display = "none";
 let showLfinal = () => document.getElementById("Lfinal").style.display = "block"; 
 console.log("Hello Odin. Let's play!");
 
+//EVENT HANDLERS:
 let player = document.querySelector(".subsub_2 > button").addEventListener("click", (event) => event.target.value);
 
 document.getElementById("start").addEventListener('click', playRound);
 
+//FUNCTIONS
 function getComputerChoice() {
     var i = Math.floor((Math.random()*3) +1);
     // using arrays:
@@ -63,9 +65,15 @@ function playRound() {
     let CompScores = 0;
     let UserScores = 0;  
 
-    
+    hideStart();
+    showChoose();
+
+    while true {
+        if (player == undefined) {continue;}
+        else if (player == 'rock' || player == 'scissors' || player == 'paper') {break;}
+    };
+
     for (let i=1; i<=5;) {
-    let player = document.querySelector(".subsub_2 > button").addEventListener("click", (event) => event.target.value);
     let comp = getComputerChoice();
     // console.log(player + ' ' + comp);
     //NORMAL MODE:
