@@ -1,3 +1,27 @@
+//DISPLAY FUNCTIONS:
+let hideStart = () => document.getElementById("start").style.display = "none";
+let showStart= () => document.getElementById("start").style.display = "block"; 
+
+let hideChoose = () => document.getElementById("choose").style.display = "none";
+let showChoose = () => document.getElementById("choose").style.display = "block"; 
+
+let hideRound = () => document.getElementById("round").style.display = "none";
+let showRound = () => document.getElementById("round").style.display = "block"; 
+
+let hideWin = () => document.getElementById("win").style.display = "none";
+let showWin = () => document.getElementById("win").style.display = "block"; 
+
+let hideLose = () => document.getElementById("lose").style.display = "none";
+let showLose = () => document.getElementById("lose").style.display = "block"; 
+
+let hideWfinal = () => document.getElementById("Wfinal").style.display = "none";
+let showLfinal = () => document.getElementById("Lfinal").style.display = "block"; 
+console.log("Hello Odin. Let's play!");
+
+let player = document.querySelector(".subsub_2 > button").addEventListener("click", (event) => event.target.value);
+
+document.getElementById("start").addEventListener('click', playRound);
+
 function getComputerChoice() {
     var i = Math.floor((Math.random()*3) +1);
     // using arrays:
@@ -12,25 +36,26 @@ function getComputerChoice() {
 };
 
 function getHumanChoice() {
-    let pick = prompt (`What\'s your pick? `);
+    
+    // let pick = prompt (`What\'s your pick? `);
     // research how to make the string variables case-insensitive
     // SOlution: trim and convert to lowercase before comparison
 
     //NORMAL MODE:
 
-    if (pick == undefined) {
-        alert("What the fudge?? Cancel the damn match!");
-        //RETURN a START STATE FUNCTION
-    }
+    // if (pick == undefined) {
+    //     alert("What the fudge?? Cancel the damn match!");
+    //     //RETURN a START STATE FUNCTION
+    // }
 
-    pick = pick.trim().toLowerCase();
+    // pick = pick.trim().toLowerCase();
 
     // if (pick == "rock" || pick == "paper" || pick == "scissors") {return pick;}
     // else {alert("Hey, please choose rock, paper, or scissors!");}
     // };
 
     //HARD MODE:
-    return (pick == "rock" || pick == "paper" || pick == "scissors") ? pick : alert("Hey, please choose rock, paper, or scissors!"); playRound();
+//     return (pick == "rock" || pick == "paper" || pick == "scissors") ? pick : alert("Hey, please choose rock, paper, or scissors!"); playRound();
 }
 
 function playRound() {
@@ -38,11 +63,9 @@ function playRound() {
     let CompScores = 0;
     let UserScores = 0;  
 
-    document.getElementById("start").style.display = "none"
-    document.getElementById("start").style.display = "none"
-
+    
     for (let i=1; i<=5;) {
-    let player = getHumanChoice();
+    let player = document.querySelector(".subsub_2 > button").addEventListener("click", (event) => event.target.value);
     let comp = getComputerChoice();
     // console.log(player + ' ' + comp);
     //NORMAL MODE:
@@ -82,9 +105,10 @@ function playRound() {
         );
 }
 
-console.log("Hello Odin. Let's play!");
 
-document.getElementById("start").addEventListener('click', playRound);
+
+
+
 //3/3/2025 CONTINUE SOLVING HOW THE ADDEVENTLISTENER WORKS ON PORT 5500
 
 // FIXME: - Setup file folder in Github with index.html, readme, js ScriptProcessorNode

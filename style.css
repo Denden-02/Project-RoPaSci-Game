@@ -78,7 +78,7 @@ button#start {
 }
 
 div.subsub_1#monitor > p {
-    display:block;
+    display:none;
     font-size: 3rem;
     font-weight:bolder;
 }

@@ -27,7 +27,8 @@ SCRIPT.JS PSEUDOCODE Thought Process:
     - Lower BOX > #pick, #wallpick
 - START CALL: the playRound() using the green "START" button > querySelector + AddEventListener(event,func)
 - Replace the Green "Start" button with battle narration: "Make a pick"
-    -- FIXED: Add relevant HTML and use display:none properties to hide them if needed
+    -- FIXED: Add relevant HTML, CSS, and use display:none properties to hide them if needed
+- THINK about how to do a "Wait for a click" button after starting a game using green START
 - SELECT: Make querySelectors to the #pick BUTTONS > Add event listeners (AddEventListener(event, func)) to make a human pick (getHumanChoice)
     - After human pick, call the getComputerChoice RNG
 - SELECT: the question mark '?' div and replace it with the Computer Choice variable (getComputerChoice)
