@@ -1,4 +1,4 @@
-//DISPLAY FUNCTIONS:
+//DISPLAY 'TOGGLE' FUNCTIONS:
 let hideStart = () => document.getElementById("start").style.display = "none";
 let showStart= () => document.getElementById("start").style.display = "block"; 
 
@@ -14,108 +14,94 @@ let showWin = () => document.getElementById("win").style.display = "block";
 let hideLose = () => document.getElementById("lose").style.display = "none";
 let showLose = () => document.getElementById("lose").style.display = "block"; 
 
+let hideDraw = () => document.getElementById("draw").style.display = "none";
+let showDraw = () => document.getElementById("draw").style.display = "block"; 
+
 let hideWfinal = () => document.getElementById("Wfinal").style.display = "none";
 let showLfinal = () => document.getElementById("Lfinal").style.display = "block"; 
 console.log("Hello Odin. Let's play!");
+
+let offDisplay = () => document.quer("div.subsub_1#monitor > p").style.display = "none"; 
 
 //EVENT HANDLERS:
 let player = document.querySelector(".subsub_2 > button").addEventListener("click", (event) => event.target.value);
 
 document.getElementById("start").addEventListener('click', playRound);
 
-//FUNCTIONS
+//FUNCTIONS:
 function getComputerChoice() {
     var i = Math.floor((Math.random()*3) +1);
-    // using arrays:
-    // var lst = [rck,ppr,scr];
-    // return lst.at(i);
-    // console.log(i);
-
-    //using conditionals & comparisons:
     if (i == 1) {return "rock"};
     if (i == 2) {return "paper"};
     if (i == 3) {return "scissors"};
 };
 
 function getHumanChoice() {
-    
-    // let pick = prompt (`What\'s your pick? `);
-    // research how to make the string variables case-insensitive
-    // SOlution: trim and convert to lowercase before comparison
-
-    //NORMAL MODE:
-
-    // if (pick == undefined) {
-    //     alert("What the fudge?? Cancel the damn match!");
-    //     //RETURN a START STATE FUNCTION
-    // }
-
-    // pick = pick.trim().toLowerCase();
-
-    // if (pick == "rock" || pick == "paper" || pick == "scissors") {return pick;}
-    // else {alert("Hey, please choose rock, paper, or scissors!");}
-    // };
-
-    //HARD MODE:
-//     return (pick == "rock" || pick == "paper" || pick == "scissors") ? pick : alert("Hey, please choose rock, paper, or scissors!"); playRound();
+    while (true) {
+        if (player == undefined) {
+            continue; //CRASHING HERE BECAUSE OF WHILE LOOP;
+        } else if (player == 'rock' || player == 'scissors' || player == 'paper') {
+            return player;
+        }
+    };
 }
 
+// TODO:try NORMAL MODE: addEventListeners
+// also try HARD MODE: await/async method
 function playRound() {
-    
     let CompScores = 0;
     let UserScores = 0;  
 
     hideStart();
     showChoose();
-
-    while true {
-        if (player == undefined) {continue;}
-        else if (player == 'rock' || player == 'scissors' || player == 'paper') {break;}
-    };
-
-    for (let i=1; i<=5;) {
+ 
+    for (let r=1; r<=5;++r) {
     let comp = getComputerChoice();
-    // console.log(player + ' ' + comp);
-    //NORMAL MODE:
+    
+    getHumanChoice();
+
     if (player == 'rock' && comp == 'scissors' || player == 'scissors' && comp == 'paper' || player == 'paper' && comp == 'rock') {
         UserScores += 1;
-        console.log(`player => ${player} vs. computer => ${comp}: You WIN!`);
-        i++;
-        console.table({"Player":UserScores,"Computer":CompScores});
-        // console.log('current '+i);
+        document.getElementById("humanScore").textContent = UserScores;
+        document.getElementById("compScore").textContent = CompScores;
+        document.getElementById("round").textContent = `ROUND ${r}`;
+        hideChoose();
+        showRound();
+        showWin();
+        player == undefined;
+
     } else if (player == 'scissors' && comp == 'rock' || player == 'paper' && comp == 'scissors' || player == 'rock' && comp == 'paper') {
         CompScores += 1;
-        console.log(`player => ${player} vs. computer => ${comp}: You LOSE!`);
-        i++;
-        console.table({"Player":UserScores,"Computer":CompScores});
-        // console.log('current '+i);
+        document.getElementById("humanScore").textContent = UserScores;
+        document.getElementById("compScore").textContent = CompScores;
+        document.getElementById("round").textContent = `ROUND ${r}`;
+        hideChoose();
+        showRound();
+        showLose();
+        player == undefined;
+ 
     } else {
-        console.log("DRAW! Repeating the round.");
-        console.table({"Player":UserScores,"Computer":CompScores});
-        // console.log('current '+i);
+        document.getElementById("humanScore").textContent = UserScores;
+        document.getElementById("compScore").textContent = CompScores;
+        document.getElementById("round").textContent = `ROUND ${r}`;
+        hideChoose();
+        showRound();
+        showDraw();   
+        player == undefined;     
     }
 
-    }
+    };
     
-    if ( UserScores> CompScores ) {
-        console.log(`FINAL SCORE: 
-            player(${UserScores})
-            computer(${CompScores})
-
-            YOU WIN!`);
-    } else console.log (
-            `FINAL SCORE: 
-
-            player(${UserScores})
-            computer(${CompScores})
-            
-            YOU LOSE!`
-        );
-}
-
-
-
-
+    if (UserScores > CompScores) {
+        offDisplay();
+        showWfinal();
+        showStart();        
+    } else if (UserScores< CompScores) {
+        offDisplay();
+        showLfinal();
+        showStart();
+    };
+};
 
 //3/3/2025 CONTINUE SOLVING HOW THE ADDEVENTLISTENER WORKS ON PORT 5500
 

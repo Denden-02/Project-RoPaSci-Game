@@ -57,10 +57,12 @@ h1 {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    gap:35px;
 }
 
 div.subsub_1#humanScore, div.subsub_1#compScore {
     width: 10vw;
+    font-size: 170px;
 }
 
 div.subsub_1#monitor {
