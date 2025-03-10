@@ -24,47 +24,55 @@ console.log("Hello Odin. Let's play!");
 let offDisplay = () => document.quer("div.subsub_1#monitor > p").style.display = "none"; 
 
 //EVENT HANDLERS:
-let player = document.querySelector(".subsub_2 > button").addEventListener("click", (event) => event.target.value);
 
-document.getElementById("start").addEventListener('click', playRound);
+document.getElementById("start").addEventListener('click', startGame);
 
 //FUNCTIONS:
-function getComputerChoice() {
-    var i = Math.floor((Math.random()*3) +1);
-    if (i == 1) {return "rock"};
-    if (i == 2) {return "paper"};
-    if (i == 3) {return "scissors"};
-};
-
-function getHumanChoice() {
-    while (true) {
-        if (player == undefined) {
-            continue; //CRASHING HERE BECAUSE OF WHILE LOOP;
-        } else if (player == 'rock' || player == 'scissors' || player == 'paper') {
-            return player;
-        }
-    };
+function startGame() {
+    let buttons = document.querySelectorAll(".subsub_2 > button") // result: nodelist object
+    buttons.forEach(
+        function(BTN) {
+            return BTN.addEventListener("click", playRound)
+        });
+    hideStart();
+    showRound();
+    showChoose();
 }
 
-// TODO:try NORMAL MODE: addEventListeners
+function getComputerChoice() {
+    let pck = ["rock","paper","scissors"];
+    let i = Math.floor(Math.random()*3);
+    return pck[i];
+};
+
+//SKIP BELOW FUNCTION FIRST
+// function getHumanChoice() {
+//     while (true) {
+//         if (player == undefined) {
+//             continue; //CRASHING HERE BECAUSE OF WHILE LOOP;
+//         } else if (player == 'rock' || player == 'scissors' || player == 'paper') {
+//             return player;
+//         }
+//     };
+// }
+
+// try NORMAL MODE: addEventListeners
+// TODO: 3/9/2025 CHECK SEMANTICS, CHECK LOGIC OF RPS BUTTONS, STUDY WHAT NODELIST METHOD WOULD WORK ON ALL THE BUTTONS 
 // also try HARD MODE: await/async method
-function playRound() {
-    let CompScores = 0;
-    let UserScores = 0;  
+let CompScores = 0;
+let UserScores = 0;  
+let roundCount = 0;
 
-    hideStart();
-    showChoose();
- 
-    for (let r=1; r<=5;++r) {
+function playRound(e) {
+    let player = e.currentTarget.value;
     let comp = getComputerChoice();
-    
-    getHumanChoice();
-
+    // for (let r=1; r<=5;++r) {};
+   
     if (player == 'rock' && comp == 'scissors' || player == 'scissors' && comp == 'paper' || player == 'paper' && comp == 'rock') {
         UserScores += 1;
-        document.getElementById("humanScore").textContent = UserScores;
-        document.getElementById("compScore").textContent = CompScores;
-        document.getElementById("round").textContent = `ROUND ${r}`;
+        document.getElementById("humanScore").innerHTML = `${UserScores}<p>Hooman</p>`;
+        document.getElementById("compScore").innerHTML = `${CompScores}<p>Hooman</p>`;
+        document.getElementById("round").textContent = `ROUND ${roundCount+=1}`;
         hideChoose();
         showRound();
         showWin();
@@ -72,26 +80,25 @@ function playRound() {
 
     } else if (player == 'scissors' && comp == 'rock' || player == 'paper' && comp == 'scissors' || player == 'rock' && comp == 'paper') {
         CompScores += 1;
-        document.getElementById("humanScore").textContent = UserScores;
-        document.getElementById("compScore").textContent = CompScores;
-        document.getElementById("round").textContent = `ROUND ${r}`;
+        document.getElementById("humanScore").innerHTML = `${UserScores}<p>Hooman</p>`;
+        document.getElementById("compScore").innerHTML = `${CompScores}<p>Hooman</p>`;
+        document.getElementById("round").textContent = `ROUND ${roundCount+=1}`;
         hideChoose();
         showRound();
         showLose();
         player == undefined;
  
     } else {
-        document.getElementById("humanScore").textContent = UserScores;
-        document.getElementById("compScore").textContent = CompScores;
-        document.getElementById("round").textContent = `ROUND ${r}`;
-        hideChoose();
+        document.getElementById("humanScore").innerHTML = `${UserScores }<p>Hooman</p>`;
+        document.getElementById("compScore").innerHTML = `${CompScores}<p>Hooman</p>`;
+        document.getElementById("round").textContent = `ROUND ${roundCount}`;        hideChoose();
         showRound();
         showDraw();   
         player == undefined;     
     }
-
     };
     
+if (roundCount === 5) {
     if (UserScores > CompScores) {
         offDisplay();
         showWfinal();
@@ -100,10 +107,8 @@ function playRound() {
         offDisplay();
         showLfinal();
         showStart();
-    };
+    }
 };
-
-//3/3/2025 CONTINUE SOLVING HOW THE ADDEVENTLISTENER WORKS ON PORT 5500
 
 // FIXME: - Setup file folder in Github with index.html, readme, js ScriptProcessorNode
 // FIXME: - Create function that will make the AI pick R,P,S {via Math.floor(Math.random())}
