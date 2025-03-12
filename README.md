@@ -29,8 +29,9 @@ SCRIPT.JS PSEUDOCODE Thought Process:
 - Replace the Green "Start" button with battle narration: "Make a pick"
     -- FIXED: Add relevant HTML, CSS, and use display:none properties to hide them if needed
 - THINK about how to do a "Wait for a click" button after starting a game using green START
-- SELECT: Make querySelectors to the #pick BUTTONS > Add event listeners (AddEventListener(event, func)) to make a human pick (getHumanChoice)
-    - After human pick, call the getComputerChoice RNG
+- SELECT HUMAN: Add querySelectorAll to the #pick BUTTONS > Add event listeners (AddEventListener(event, func)) to make a human pick and start the playRound function
+- SELECT COMP: After human pick, also evaluate the getComputerChoice pick (RNG)
+- Add an audio queue and setTimeout before playing the round
 - SELECT: the question mark '?' div and replace it with the Computer Choice variable (getComputerChoice)
 - CHECK all conditionals to see who is the winner
 - REPLACE the #monitor to show the round's winner

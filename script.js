@@ -21,7 +21,7 @@ let hideWfinal = () => document.getElementById("Wfinal").style.display = "none";
 let showLfinal = () => document.getElementById("Lfinal").style.display = "block"; 
 console.log("Hello Odin. Let's play!");
 
-let offDisplay = () => document.quer("div.subsub_1#monitor > p").style.display = "none"; 
+let offDisplay = () => document.querySelectorAll("div.subsub_1#monitor > p").forEach(each => each.style.display = "none"); 
 
 //EVENT HANDLERS:
 
@@ -63,53 +63,68 @@ let CompScores = 0;
 let UserScores = 0;  
 let roundCount = 0;
 
+function batotopick(callback) {
+    let batopik = new Audio(images2use/batobatopikpik.mp3);
+    batopik.play();
+    setTimeout(callback, 2000)
+}
 function playRound(e) {
     let player = e.currentTarget.value;
     let comp = getComputerChoice();
     // for (let r=1; r<=5;++r) {};
-   
+    
     if (player == 'rock' && comp == 'scissors' || player == 'scissors' && comp == 'paper' || player == 'paper' && comp == 'rock') {
         UserScores += 1;
         document.getElementById("humanScore").innerHTML = `${UserScores}<p>Hooman</p>`;
-        document.getElementById("compScore").innerHTML = `${CompScores}<p>Hooman</p>`;
+        document.getElementById("compScore").innerHTML = `${CompScores}<p>Wall-y</p>`;
         document.getElementById("round").textContent = `ROUND ${roundCount+=1}`;
-        hideChoose();
+        offDisplay();
         showRound();
         showWin();
-        player == undefined;
+        if (roundCount === 5) {
+                setTimeout(checkRound, 3000)
+                };
 
     } else if (player == 'scissors' && comp == 'rock' || player == 'paper' && comp == 'scissors' || player == 'rock' && comp == 'paper') {
         CompScores += 1;
         document.getElementById("humanScore").innerHTML = `${UserScores}<p>Hooman</p>`;
-        document.getElementById("compScore").innerHTML = `${CompScores}<p>Hooman</p>`;
+        document.getElementById("compScore").innerHTML = `${CompScores}<p>Wall-y</p>`;
         document.getElementById("round").textContent = `ROUND ${roundCount+=1}`;
-        hideChoose();
+        offDisplay();
         showRound();
         showLose();
-        player == undefined;
+        if (roundCount === 5) {
+            
+            setTimeout(checkRound, 3000)
+
+            };
+        
  
     } else {
         document.getElementById("humanScore").innerHTML = `${UserScores }<p>Hooman</p>`;
-        document.getElementById("compScore").innerHTML = `${CompScores}<p>Hooman</p>`;
-        document.getElementById("round").textContent = `ROUND ${roundCount}`;        hideChoose();
+        document.getElementById("compScore").innerHTML = `${CompScores}<p>Wall-y</p>`;
+        document.getElementById("round").textContent = `ROUND ${roundCount}`;        offDisplay();
         showRound();
-        showDraw();   
-        player == undefined;     
+        showDraw();      
     }
     };
-    
-if (roundCount === 5) {
-    if (UserScores > CompScores) {
-        offDisplay();
-        showWfinal();
-        showStart();        
-    } else if (UserScores< CompScores) {
-        offDisplay();
-        showLfinal();
-        showStart();
-    }
-};
 
+function checkRound() { 
+        if (UserScores > CompScores) {
+            offDisplay();
+            showWfinal();
+            showStart();
+            roundCount = 0;        
+        } else if (UserScores< CompScores) {
+            offDisplay();
+            showLfinal();
+            showStart();
+            roundCount = 0;
+        }
+    };
+
+// TODO: FINISH LOGIC 3/12
+// /2025
 // FIXME: - Setup file folder in Github with index.html, readme, js ScriptProcessorNode
 // FIXME: - Create function that will make the AI pick R,P,S {via Math.floor(Math.random())}
 // FIXME: - Create function that prompts user to pick R,P,S using getHumanChoice()
