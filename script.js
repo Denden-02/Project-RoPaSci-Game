@@ -17,22 +17,30 @@ let showLose = () => document.getElementById("lose").style.display = "block";
 let hideDraw = () => document.getElementById("draw").style.display = "none";
 let showDraw = () => document.getElementById("draw").style.display = "block"; 
 
-let hideWfinal = () => document.getElementById("Wfinal").style.display = "none";
+let showWfinal = () => document.getElementById("Wfinal").style.display = "block";
 let showLfinal = () => document.getElementById("Lfinal").style.display = "block"; 
+
+let showRes = () => document.getElementById("res").style.display = "block";
+
 console.log("Hello Odin. Let's play!");
 
-let offDisplay = () => document.querySelectorAll("div.subsub_1#monitor > p").forEach(each => each.style.display = "none"); 
+let offDisplay = () => document.querySelectorAll("div.subsub_1#monitor > p, div.subsub_1#monitor > button").forEach(each => each.style.display = "none"); 
+
+let CompScores = 0;
+let UserScores = 0;  
+let roundCount = 0;
+let player = "";
+let buttons = document.querySelectorAll(".subsub_2 > button");
 
 //EVENT HANDLERS:
 
 document.getElementById("start").addEventListener('click', startGame);
 
 //FUNCTIONS:
-function startGame() {
-    let buttons = document.querySelectorAll(".subsub_2 > button") // result: nodelist object
+function startGame() { 
     buttons.forEach(
         function(BTN) {
-            return BTN.addEventListener("click", playRound)
+            return BTN.addEventListener("click", batotopick)
         });
     hideStart();
     showRound();
@@ -42,6 +50,13 @@ function startGame() {
 function getComputerChoice() {
     let pck = ["rock","paper","scissors"];
     let i = Math.floor(Math.random()*3);
+    if (pck[i] == "rock") {
+        document.getElementById("sub_wallpick").innerHTML = `<img src="./images2use/rock.png" width="75" height="75" alt="a rock" >`
+    } else if (pck[i] == "paper") {
+        document.getElementById("sub_wallpick").innerHTML = `<img src="./images2use/paper.png" width="75" height="75" alt="a paper">`
+    } else if (pck[i] == "scissors") {
+        document.getElementById("sub_wallpick").innerHTML = `<img src="./images2use/scissors.png" width="75" height="75" alt="scissors">`
+    };
     return pck[i];
 };
 
@@ -59,17 +74,18 @@ function getComputerChoice() {
 // try NORMAL MODE: addEventListeners
 // TODO: 3/9/2025 CHECK SEMANTICS, CHECK LOGIC OF RPS BUTTONS, STUDY WHAT NODELIST METHOD WOULD WORK ON ALL THE BUTTONS 
 // also try HARD MODE: await/async method
-let CompScores = 0;
-let UserScores = 0;  
-let roundCount = 0;
 
-function batotopick(callback) {
-    let batopik = new Audio(images2use/batobatopikpik.mp3);
+function batotopick(evt) {
+    let batopik = new Audio("images2use/batobatopikpik.mp3");
+    player = evt.currentTarget.value;
+
+    buttons.forEach((eachBtn) => eachBtn.disabled = true);   
     batopik.play();
-    setTimeout(callback, 2000)
+
+    setTimeout(playRound, 2000);
 }
-function playRound(e) {
-    let player = e.currentTarget.value;
+
+function playRound() {
     let comp = getComputerChoice();
     // for (let r=1; r<=5;++r) {};
     
@@ -80,10 +96,21 @@ function playRound(e) {
         document.getElementById("round").textContent = `ROUND ${roundCount+=1}`;
         offDisplay();
         showRound();
-        showWin();
+        showWin(); 
+
+        //enable all buttons: 
+        buttons.forEach((eachBtn) => eachBtn.disabled = false);  
+
         if (roundCount === 5) {
-                setTimeout(checkRound, 3000)
-                };
+            //disable buttons while finalizing
+            buttons.forEach((eachBtn) => eachBtn.disabled = true);  
+            setTimeout(() => {
+                offDisplay();
+                showRes();
+            } , 2000);
+
+            setTimeout(checkRound, 4000)
+            };
 
     } else if (player == 'scissors' && comp == 'rock' || player == 'paper' && comp == 'scissors' || player == 'rock' && comp == 'paper') {
         CompScores += 1;
@@ -93,34 +120,62 @@ function playRound(e) {
         offDisplay();
         showRound();
         showLose();
-        if (roundCount === 5) {
-            
-            setTimeout(checkRound, 3000)
+        
+        //enable all buttons: 
+        buttons.forEach((eachBtn) => eachBtn.disabled = false);  
 
+        if (roundCount === 5) {
+            //disable buttons while finalizing
+            buttons.forEach((eachBtn) => eachBtn.disabled = true);  
+            setTimeout(()=> { 
+                offDisplay(); 
+                showRes();
+            } , 2000);
+            setTimeout(checkRound, 4000)
             };
         
  
     } else {
         document.getElementById("humanScore").innerHTML = `${UserScores }<p>Hooman</p>`;
         document.getElementById("compScore").innerHTML = `${CompScores}<p>Wall-y</p>`;
-        document.getElementById("round").textContent = `ROUND ${roundCount}`;        offDisplay();
+        document.getElementById("round").textContent = `ROUND ${roundCount}`;       
+        offDisplay();
         showRound();
-        showDraw();      
+        showDraw(); 
+
+        //enable all buttons:
+        buttons.forEach((eachBtn) => eachBtn.disabled = false);  
     }
-    };
+};
 
 function checkRound() { 
         if (UserScores > CompScores) {
             offDisplay();
             showWfinal();
             showStart();
-            roundCount = 0;        
+            buttons.forEach((eachBtn) => eachBtn.disabled = false);  
+            roundCount = 0;  
+            UserScores = 0;
+            CompScores = 0; 
+            buttons.forEach(
+                function(BTN) {
+                    return BTN.removeEventListener("click", batotopick)
+                }
+            );     
         } else if (UserScores< CompScores) {
             offDisplay();
             showLfinal();
             showStart();
+            buttons.forEach((eachBtn) => eachBtn.disabled = false);  
             roundCount = 0;
-        }
+            UserScores = 0;
+            CompScores = 0; 
+            buttons.forEach(
+                function(BTN) {
+                    return BTN.removeEventListener("click", batotopick)
+                }
+            );       
+        };
     };
 
 // TODO: FINISH LOGIC 3/12
