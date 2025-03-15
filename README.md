@@ -1,5 +1,5 @@
 # Project-RoPaSci-Game
-Console exclusive Rock, Paper, &amp; Scissors Project
+Web exclusive Rock, Paper, & Scissors Project
 
 PSEUDO code for ordinary hoomans:
 
